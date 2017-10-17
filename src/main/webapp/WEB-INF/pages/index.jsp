@@ -28,6 +28,17 @@
                 <p>
                 <input type="radio" name="gender" value="MALE" checked>Male
                 <input type="radio" name="gender" value="FEMALE">Female<br></p>
+
+                <label>Age</label>
+                <select name="age">
+                    <option value="">Select</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                </select>
+
                 <button type="submit">Login</button>
             </div>
         </form:form>

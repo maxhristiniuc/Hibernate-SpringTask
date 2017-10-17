@@ -1,16 +1,14 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: mhristiniuc
-  Date: 10/4/2017
-  Time: 9:42 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Search result</title>
 </head>
 <body>
-
+    <h2>Here is the search result data:</h2>
+    <c:forEach items="${usersList}" var="user">
+        <p>Id: ${user.id} | Name: ${user.name} | Age: ${user.age} | Gender: ${user.gender}</p>
+    </c:forEach>
 </body>
 </html>
+

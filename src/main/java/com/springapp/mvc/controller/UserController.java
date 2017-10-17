@@ -1,5 +1,6 @@
 package com.springapp.mvc.controller;
 
+import com.springapp.mvc.model.Gender;
 import com.springapp.mvc.model.User;
 import com.springapp.mvc.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.List;
 
 import static com.springapp.mvc.model.Gender.*;
 
@@ -23,12 +26,14 @@ public class UserController {
         return "index";
     }
 
+    //pt spring security acesta nu va mai fi necesar
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String submit(Model model, @ModelAttribute("user") User user) {
         if (userService.checkUser(user)) {
             model.addAttribute(user);
             return "redirect:/allusers";
-        } else {
+       }
+        else {
             model.addAttribute("error", "Invalid Details");
             return "error";
         }
@@ -54,4 +59,10 @@ public class UserController {
         return "gender";
     }
 
+    @RequestMapping(value = "/searchUsers", method = RequestMethod.GET)
+    public String searchUsers(Model model, Integer age, Gender gender) {
+        List<User> users = userService.searchUsersByAgeAndGender(age, gender);
+        model.addAttribute("usersList", users);
+        return "searchResult";
+    }
 }
